@@ -11,8 +11,8 @@ class GameScene: SKScene {
     var myLabel = SKLabelNode(fontNamed:"Chalkduster")
    
     var player:Player!
+    var lastUpdate:CFTimeInterval = 0
     var entities = [Entity]()
-   
     var maptiles = [Entity]()
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -82,8 +82,10 @@ class GameScene: SKScene {
    //update all the objects sprite positions based on camera position
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
+    
         player.update()
+            lastUpdate=currentTime
+       
         
         camera.x=player.position.x-CGRectGetMidX(self.frame);
         camera.y=player.position.y-CGRectGetMidY(self.frame)
