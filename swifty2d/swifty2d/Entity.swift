@@ -47,8 +47,8 @@ class Entity{
     
     //returns distance to a point
     func distanceToPoint(point :CGPoint)->CGFloat{
-        let y = abs(abs((SpriteNode.position.y-point.y)))
-        let x = abs((SpriteNode.position.x-point.x))
+        let y = abs(abs((position.y-point.y)))
+        let x = abs((position.x-point.x))
         
         
         return sqrt(((x*x)+(y*y)))

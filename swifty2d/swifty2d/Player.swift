@@ -10,7 +10,7 @@ class Player: Entity{
     var camera:Camera!
     var isMoving:Bool=false
     var moveTo:CGPoint!
-    var Playerspeed:CGFloat = 1
+    var Playerspeed:CGFloat = 3.5
     
     //why doesnt this show up in the intellisense if its not overrid
     init(spriteSheet:SpriteSheet,SpriteX:Double,SpriteY:Double, camera: Camera){
@@ -31,14 +31,41 @@ class Player: Entity{
     }
     override func update(){
         if(isMoving){
-            if(self.position.x==moveTo.x &&  self.position.y==moveTo.y){
+            
+            if(self.position.x == moveTo.x &&  self.position.y == moveTo.y  || distanceToPoint(moveTo)<(Playerspeed-1) ){
             isMoving=false
             moveTo=nil
-                
+             // println("Player move complete")
             }else{
              //animate spirte and move
-                position.x -= position.x-moveTo.x + Playerspeed
-                position.y-=position.y - moveTo.y+Playerspeed
+                //get the angle in which the player is moving
+             var angle = atan2((moveTo.y - position.y), (moveTo.x-position.x))
+                
+              //update position
+                position.x+=cos(angle)*Playerspeed
+                position.y+=sin(angle)*Playerspeed
+                
+             //   angle += CGFloat(M_PI/2)
+                println(angle);
+                //update sprite so it is facing in the correct direction -> kludgy but works for now
+                if(angle>=2 && angle<4){
+                    spriteY=3
+                }else if(angle>=1 && angle<2){
+                    spriteY=2
+                }
+                else if(angle >= -1 && angle<1){
+                    spriteY=0
+                }else{
+                    spriteY=1
+                }
+                //ehh works for now
+                spriteX++
+                if(spriteX>2){
+                    spriteX=0
+                }
+                
+                SpriteNode.texture = spritesheet.getTextureAt(spriteX, y: spriteY)
+                 // println("Moving PLayer")
             }
         }
     }
