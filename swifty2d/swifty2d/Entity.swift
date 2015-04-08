@@ -14,11 +14,11 @@ class Entity{
     var spriteY:Double = 0
     var height:CGFloat = 64
     var width:CGFloat  = 64
-    
-   
+    let speed:CGFloat = 100
+    var position:CGPoint!
     
     init(spriteSheet:SpriteSheet,SpriteX:Double,SpriteY:Double){
-   
+        self.position = CGPoint(x: 0, y: 0)
         
         self.spriteX = SpriteX
         self.spriteY = SpriteY
@@ -28,20 +28,37 @@ class Entity{
     }
    
     
-  //returns if the Object was touched -> built in function for this?
+  //returns if the Object was touched -> built in function for this? -- CGRectContainspoint?
     func isTouched(point:CGPoint)->Bool{
         if(point.x>=self.SpriteNode.position.x-(self.width/2) && point.x<=self.SpriteNode.position.x+(self.width/2) && point.y>=self.SpriteNode.position.y-(height/2) && point.y<=self.SpriteNode.position.y+(height/2)){
             return true;
             }
         return false;
     }
-    //moves the entity to a point
+    //moves the entity to a point ->needs to be updated for camera 
+    // runAction probably wont work
     func moveTo(location:CGPoint){
         SpriteNode.removeAllActions()
-        SpriteNode.runAction(SKAction.moveTo(location, duration: 2))
+        let dist = distanceToPoint(location)
+        let duration = NSTimeInterval(dist/speed)
+        SpriteNode.runAction(SKAction.moveTo(location, duration:duration ))
     }
     
+    
+    //returns distance to a point
+    func distanceToPoint(point :CGPoint)->CGFloat{
+        let y = abs(abs((SpriteNode.position.y-point.y)))
+        let x = abs((SpriteNode.position.x-point.x))
+        
+        
+        return sqrt(((x*x)+(y*y)))
+        
+        
+    }
+    
+    
     func update(){
+        
         
     }
     
