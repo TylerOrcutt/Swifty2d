@@ -13,7 +13,8 @@ class GameScene: SKScene {
     var player:Player!
     var lastUpdate:CFTimeInterval = 0
     var entities = [Entity]()
-    var maptiles = [Entity]()
+  //  var maptiles = [Entity]()
+    var map : Map!
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
@@ -29,8 +30,9 @@ class GameScene: SKScene {
         let char_sheet = SpriteSheet(Sheet: SKTexture(imageNamed: "char_sheet"), rows: 8, colums: 12)
         //map sheet
         let map_sheet = SpriteSheet(Sheet: SKTexture(imageNamed: "sp2"), rows: 12, colums: 10)
+         map = Map(mapfile:"test", mapSheet:map_sheet, gamescene:self)
       //generate a simple map for the player to run around on
-        for(var y:CGFloat = 0; y<=CGRectGetMaxY(self.frame); y+=64){
+      /*  for(var y:CGFloat = 0; y<=CGRectGetMaxY(self.frame); y+=64){
                 for(var x:CGFloat = 0; x<=CGRectGetMaxX(self.frame); x+=64){
                     let map = Entity(spriteSheet: map_sheet, SpriteX: 3, SpriteY: 9)
                  //   map.SpriteNode.position=CGPoint(x:x, y:y);
@@ -40,7 +42,7 @@ class GameScene: SKScene {
                     addChild(map.SpriteNode)
                     maptiles.append(map)
         }
-        }
+        }*/
       
      
         //add an enemy
@@ -54,8 +56,8 @@ class GameScene: SKScene {
         player = Player(spriteSheet: char_sheet, SpriteX: 0, SpriteY: 1, camera:camera)
         player.SpriteNode.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
      //   player.position=CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        player.position=CGPoint(x:0, y:0);
+        player.position = CGPoint(x: 100, y: 100)
+       // player.position=CGPoint(x:0, y:0);
         self.addChild(player.SpriteNode)
     }
     
@@ -83,7 +85,7 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     
-        player.update()
+        player.update(currentTime, dt: currentTime-lastUpdate)
             lastUpdate=currentTime
        
         
@@ -93,11 +95,12 @@ class GameScene: SKScene {
         
         player.SpriteNode.position.x = player.position.x-camera.x
         player.SpriteNode.position.y = player.position.y-camera.y
-        for tiles in maptiles{
+     /*   for tiles in maptiles{
             tiles.SpriteNode.position.x = tiles.position.x - camera.x
             tiles.SpriteNode.position.y = tiles.position.y - camera.y
             
-        }
+        }*/
+        map.update(camera)
         for enemy in entities{
             enemy.SpriteNode.position.x = enemy.position.x - camera.x
             enemy.SpriteNode.position.y = enemy.position.y - camera.y

@@ -57,7 +57,7 @@ class Entity{
     }
     
     
-    func update(){
+   func update(curTime: CFTimeInterval, dt: CFTimeInterval){
         
         
     }

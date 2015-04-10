@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		778D03F11AD5ED050026B667 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778D03F01AD5ED050026B667 /* Map.swift */; };
+		778D03F41AD5EF0D0026B667 /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 778D03F31AD5EF0D0026B667 /* test.txt */; };
+		778D03F61AD744AD0026B667 /* map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 778D03F51AD744AD0026B667 /* map.txt */; };
 		77AD50BF1AD4A90E0024B355 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD50BE1AD4A90E0024B355 /* AppDelegate.swift */; };
 		77AD50C11AD4A90E0024B355 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 77AD50C01AD4A90E0024B355 /* GameScene.sks */; };
 		77AD50C31AD4A90E0024B355 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD50C21AD4A90E0024B355 /* GameScene.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		778D03F01AD5ED050026B667 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		778D03F31AD5EF0D0026B667 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		778D03F51AD744AD0026B667 /* map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map.txt; sourceTree = "<group>"; };
 		77AD50B91AD4A90E0024B355 /* swifty2d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swifty2d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AD50BD1AD4A90E0024B355 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77AD50BE1AD4A90E0024B355 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		778D03F21AD5EF0D0026B667 /* maps */ = {
+			isa = PBXGroup;
+			children = (
+				778D03F51AD744AD0026B667 /* map.txt */,
+				778D03F31AD5EF0D0026B667 /* test.txt */,
+			);
+			path = maps;
+			sourceTree = SOURCE_ROOT;
+		};
 		77AD50B01AD4A90E0024B355 = {
 			isa = PBXGroup;
 			children = (
@@ -132,11 +147,13 @@
 		77AD50E41AD4BC860024B355 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				778D03F21AD5EF0D0026B667 /* maps */,
 				77AD50E21AD4BC340024B355 /* Player.swift */,
 				77AD50E51AD4BCA00024B355 /* Entity.swift */,
 				77AD50E71AD4BD920024B355 /* Camera.swift */,
 				77AD50E91AD4C3440024B355 /* SpriteSheet.swift */,
 				77AD50EB1AD4D3010024B355 /* Enemy.swift */,
+				778D03F01AD5ED050026B667 /* Map.swift */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -224,7 +241,9 @@
 				77AD50CD1AD4A90E0024B355 /* LaunchScreen.xib in Resources */,
 				77AD50CA1AD4A90E0024B355 /* Images.xcassets in Resources */,
 				77AD50C11AD4A90E0024B355 /* GameScene.sks in Resources */,
+				778D03F61AD744AD0026B667 /* map.txt in Resources */,
 				77AD50C81AD4A90E0024B355 /* Main.storyboard in Resources */,
+				778D03F41AD5EF0D0026B667 /* test.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +268,7 @@
 				77AD50EC1AD4D3010024B355 /* Enemy.swift in Sources */,
 				77AD50C31AD4A90E0024B355 /* GameScene.swift in Sources */,
 				77AD50C51AD4A90E0024B355 /* GameViewController.swift in Sources */,
+				778D03F11AD5ED050026B667 /* Map.swift in Sources */,
 				77AD50BF1AD4A90E0024B355 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +463,7 @@
 				77AD50DE1AD4A90E0024B355 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77AD50DF1AD4A90E0024B355 /* Build configuration list for PBXNativeTarget "swifty2dTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +472,7 @@
 				77AD50E11AD4A90E0024B355 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
